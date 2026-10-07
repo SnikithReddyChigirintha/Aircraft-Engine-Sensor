@@ -1,0 +1,133 @@
+OUTPUT
+
+============================================================
+DATASET INFORMATION
+============================================================
+
+Dataset Shape: (20631, 26)
+Number of Engines: 100
+Number of Sensors: 21
+Missing Values: 0
+
+The NASA C-MAPSS FD001 dataset contains 20,631 records
+corresponding to 100 engine units. Each record contains the
+engine number, operating cycle, three operating settings and
+21 sensor measurements.
+
+
+============================================================
+DESCRIPTIVE STATISTICS
+============================================================
+
+Descriptive statistical analysis was performed for all 21
+sensors. The mean, standard deviation, minimum value, maximum
+value and coefficient of variation were calculated.
+
+The analysis shows that different sensors have different
+ranges and levels of variation. Sensors with higher standard
+deviation show greater variation during engine operation,
+while sensors with lower variation show relatively stable
+behaviour.
+
+
+============================================================
+CORRELATION ANALYSIS
+============================================================
+
+Pearson correlation analysis was performed between all the
+sensor measurements.
+
+The correlation matrix was used to identify sensors having
+strong positive or negative relationships. Highly correlated
+sensors indicate similar variation patterns, while weakly
+correlated sensors provide relatively independent information.
+
+A correlation heatmap was generated to visually represent the
+relationships between the 21 engine sensors.
+
+
+============================================================
+ANOMALY DETECTION
+============================================================
+
+A statistical threshold of Mean ± 3 Standard Deviations was
+used to identify unusual sensor observations.
+
+For each engine and sensor, the mean and standard deviation
+were calculated separately. Sensor values falling outside the
+range of:
+
+Lower Limit = Mean - 3 × Standard Deviation
+
+Upper Limit = Mean + 3 × Standard Deviation
+
+were marked as potential anomalies.
+
+The detected anomalies were used as indicators for further
+engineering inspection rather than being directly classified
+as engine failures.
+
+
+============================================================
+ENGINE-WISE COMPARISON
+============================================================
+
+The sensor measurements were grouped according to engine
+unit. Mean and standard deviation values were calculated for
+each engine.
+
+The comparison helps identify differences in sensor behaviour
+between engine units. Engines showing higher sensor variation
+or a larger number of statistical anomaly flags can be
+prioritized for further investigation.
+
+
+============================================================
+SENSOR TIME-SERIES ANALYSIS
+============================================================
+
+Sensor behaviour was analysed with respect to operating cycle.
+
+Time-series plots were generated for Sensor 2, Sensor 3 and
+Sensor 4 for Engine 1.
+
+The plots help identify gradual changes, fluctuations and
+unusual variations in sensor measurements during successive
+operating cycles.
+
+
+============================================================
+BOX PLOT ANALYSIS
+============================================================
+
+Box plots were generated for Sensor 2, Sensor 3, Sensor 4 and
+Sensor 7.
+
+The box plots show the distribution, median, spread and
+potential outliers of the selected sensor measurements.
+
+This visualization helps compare sensor variability and
+identify observations that deviate from the normal distribution.
+
+
+============================================================
+FINAL OUTPUT
+============================================================
+
+The analysis successfully completed the following tasks:
+
+1. Loaded and validated the NASA C-MAPSS FD001 dataset.
+2. Identified 100 engine units and 21 sensor variables.
+3. Verified the dataset for missing values.
+4. Calculated descriptive statistics for all sensors.
+5. Performed Pearson correlation analysis.
+6. Generated a sensor correlation heatmap.
+7. Applied the Mean ± 3σ statistical threshold.
+8. Identified potential unusual sensor observations.
+9. Compared sensor behaviour across engine units.
+10. Generated sensor time-series and box plots.
+
+The results demonstrate that statistical analysis and
+visualization can be effectively used to study aircraft engine
+sensor behaviour, identify unusual observations and support
+condition-monitoring activities.
