@@ -177,6 +177,7 @@ The project performs:
 The results provide a foundation for aircraft engine condition monitoring and future predictive-maintenance applications.
 
 Future Scope
+
 The project can be extended by:
 - Implementing machine-learning models.
 - Predicting Remaining Useful Life (RUL).
@@ -189,6 +190,7 @@ The project can be extended by:
 
 
 Team Members
+
 Roll Number	Name
 25881A05DK	Student 1
 25881A05CZ	Student 2
@@ -197,12 +199,14 @@ Roll Number	Name
 
 
 Academic Information
+
 Course: Complex Engineering Problem 1 – Aerospace Engineering
 Department: Computer Science and Engineering
 Institution: Vardhaman College of Engineering
 Academic Year: 2026–27
 
 References
+
 - NASA C-MAPSS Jet Engine Simulated Data
 - Pandas Documentation
 - NumPy Documentation
@@ -210,6 +214,7 @@ References
 - Scikit-learn Documentation
 
 
-##Conclusion
+Conclusion
+
 The Aircraft Engine Sensor and Performance Analysis project demonstrates how Python-based data analytics can be used to study aircraft engine sensor data, identify unusual observations, and understand performance behaviour across operating cycles.
 The developed workflow provides an interpretable foundation for engine condition monitoring, anomaly detection, and future predictive-maintenance systems.
