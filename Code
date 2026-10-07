@@ -1,0 +1,104 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+columns = [
+    "unit", "cycle", "setting_1", "setting_2", "setting_3",
+    "sensor_1", "sensor_2", "sensor_3", "sensor_4", "sensor_5",
+    "sensor_6", "sensor_7", "sensor_8", "sensor_9", "sensor_10",
+    "sensor_11", "sensor_12", "sensor_13", "sensor_14", "sensor_15",
+    "sensor_16", "sensor_17", "sensor_18", "sensor_19", "sensor_20",
+    "sensor_21"
+]
+
+df = pd.read_csv(
+    "train_FD001.txt",
+    sep=r"\s+",
+    header=None,
+    names=columns
+)
+
+print("Shape:", df.shape)
+print("Number of engines:", df["unit"].nunique())
+print("Missing values:", df.isna().sum().sum())
+
+sensor_cols = [
+    c for c in df.columns
+    if c.startswith("sensor_")
+]
+
+# Descriptive statistics
+stats = df[sensor_cols].describe().T
+
+stats["cv_percent"] = (
+    stats["std"] /
+    stats["mean"].replace(0, np.nan)
+) * 100
+
+print(stats[
+    ["mean", "std", "min", "max", "cv_percent"]
+])
+
+# Pearson correlation
+corr = df[sensor_cols].corr(
+    method="pearson"
+)
+
+print(corr.round(3))
+
+# Threshold-based anomaly detection
+df["anomaly_count"] = 0
+
+for sensor in sensor_cols:
+
+    g = df.groupby("unit")[sensor]
+
+    mu = g.transform("mean")
+
+    sigma = g.transform("std").replace(
+        0, np.nan
+    )
+
+    flag = (
+        (df[sensor] - mu).abs()
+        > 3 * sigma
+    )
+
+    df["anomaly_count"] += (
+        flag.fillna(False).astype(int)
+    )
+
+# Engine-wise comparison
+engine_summary = (
+    df.groupby("unit")[sensor_cols]
+    .agg(["mean", "std"])
+)
+
+print(engine_summary.head())
+
+# Sensor time-series plot
+engine_id = 1
+
+tmp = df[df["unit"] == engine_id]
+
+plt.plot(
+    tmp["cycle"],
+    tmp["sensor_2"],
+    label="Sensor 2"
+)
+
+plt.plot(
+    tmp["cycle"],
+    tmp["sensor_3"],
+    label="Sensor 3"
+)
+
+plt.xlabel("Operating Cycle")
+plt.ylabel("Sensor Reading")
+plt.title(
+    "Sensor Behaviour - Engine 1"
+)
+
+plt.legend()
+plt.tight_layout()
+plt.show()
